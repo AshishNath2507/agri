@@ -1,3 +1,11 @@
+<?php
+    session_start();
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,14 +16,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    
+    <!-- jQuery dataTable cdns -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> -->
+    <script src="./DataTables/datatables.js"></script>
+    <!-- <script src="./DataTables/datatables.min.js"></script> -->
+    <script src="./DataTables/Select-1.3.4/js/select.dataTables.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"> -->
+    <!-- <link rel="stylesheet" href="./DataTables/datatables.css"> -->
+    <link rel="stylesheet" href="./DataTables/datatables.min.css">
+    <link rel="stylesheet" href="./DataTables/DataTables-1.11.5/css/dataTables.dataTables.min.css">
 
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
@@ -109,13 +127,13 @@
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Academics</span>
+                    <!-- <i class="fas fa-fw fa-wrench"></i> -->
+                    <span>Alumni</span>
                 </a>
                 <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item active" href="alumnicontrol.php">Alumni</a>
+                        <a class="collapse-item active" href="alumnicontrol.php"><i class="fas fa-fw fa-wrench"></i>Details</a>
                         <!-- <a class="collapse-item" href="utilities-border.html">Borders</a>
                         <a class="collapse-item" href="utilities-animation.html">Animations</a>
                         <a class="collapse-item" href="utilities-other.html">Other</a> -->
@@ -185,22 +203,9 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
+                    
 
-                    <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -225,114 +230,7 @@
                             </div>
                         </li>
 
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
-                        </li>
+                   
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -387,103 +285,49 @@
                                     </div>
 
                                 </div>
-                                <div class="addAlumni">
+                                <!-- <div class="addAlumni">
                                     <a href="../alumniadd.php">Add Alumni</a>
-                                </div>
-                                <table class="table table-striped table-hover">
+                                </div> -->
+                                <table id="alumni" class="table table-striped table-hover">
                                     <thead>
                                         <tr>
 
-                                            <th>Slno.</th>
+                                            <th>Slno</th>
                                             <th>Image</th>
                                             <th>Name</th>
-                                            <th>College</th>
-                                            <th>Gender</th>
-                                            <th>DoB</th>
                                             <th>Occupation</th>
                                             <th>Organization</th>
                                             <th>Office/Present Address</th>
                                             <th>State</th>
-                                            <th>Pincode</th>
-                                            <th>Country</th>
-                                            <th>Permanent Address</th>
-                                            <th>State</th>
-                                            <th>Pincode</th>
-                                            <th>Country</th>
-                                            <th>Nationality</th>
-                                            <th>Blood Group</th>
                                             <th>Email ID</th>
                                             <th>Mobile Number</th>
-                                            <th>Graduation</th>
-                                            <th>Year of Admission</th>
-                                            <th>Year of Degree Awarded</th>
-                                            <th>Master's</th>
-                                            <th>Year of Admission</th>
-                                            <th>Year of Degree Awarded</th>
-                                            <th>Master's Discipline</th>
-                                            <th>Doctoral</th>
-                                            <th>Year of Admission</th>
-                                            <th>Year of Degree Awarded</th>
-                                            <th>Doctoral's Discipline</th>
                                             <th>Actions</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <?php
+                                        require '../connect.php';
+                                        $result = mysqli_query($con, "select * from alumini");
+                                        while ($row = mysqli_fetch_array($result)) {
 
-                                            <?php
-                                            require '../connect.php';
-                                            $result = mysqli_query($con, "select * from alumini");
-                                            while ($row = mysqli_fetch_array($result)) {
-                                                $sl = $row['slno'];
-                                                echo '
-								            <tr>
-												
-                                                <td>' . $row["slno"] . '</td>
-												' ?>
+                                        ?>
+                                            <tr>
+                                                <td> <?php echo $row["slno"]  ?> </td>
                                                 <td><img src="<?php echo '../' . $row["photo"]; ?>" alt="image" style="width:80%;"></td>
-                                                <?php echo '
-                                                <td>' . $row["name"] . '</td>
-                                                <td>' . $row["college"] . '</td>
-                                                <td>' . $row["gender"] . '</td>
-                                                <td>' . $row["dob"] . '</td>
-                                                <td>' . $row["occupation"] . '</td>
-                                                <td>' . $row["organization"] . '</td>
-                                                <td>' . $row["o_address"] . '</td>
-                                                <td>' . $row["state"] . '</td>
-                                                <td>' . $row["pin"] . '</td>
-                                                <td>' . $row["country"] . '</td>
-                                                <td>' . $row["p_address"] . '</td>
-                                                <td>' . $row["p_state"] . '</td>
-                                                <td>' . $row["p_pin"] . '</td>
-                                                <td>' . $row["p_country"] . '</td>
-                                                <td>' . $row["nationality"] . '</td>
-                                                <td>' . $row["blood_group"] . '</td>
-                                                <td>' . $row["email"] . '</td>
-                                                <td>' . $row["phone"] . '</td>
-                                                <td>' . $row["graduation"] . '</td>
-                                                <td>' . $row["year_of_adm"] . '</td>
-                                                <td>' . $row["year_of_pass"] . '</td>
-                                                <td>' . $row["masters"] . '</td>
-                                                <td>' . $row["year_of_m_adm"] . '</td>
-                                                <td>' . $row["year_of_m_pass"] . '</td>
-                                                <td>' . $row["m_discipline"] . '</td>
-                                                <td>' . $row["doctoral"] . '</td>
-                                                <td>' . $row["year_of_d_adm"] . '</td>
-                                                <td>' . $row["year_of_d_pass"] . '</td>
-                                                <td>' . $row["doc_discipline"] . '</td>
-												<td>
-                                                    ' ?> <a href="delete.php?slno=<?php echo $row["slno"]; ?> " class="delete"><i class="material-icons" title="Delete">&#xE872;</i></a>
-                                            <?php echo '    
-                                                    
-												</td>
-                                                </tr>
-                                                
-                                                ';
-                                            }
-                                            ?>
-                                        </tr>
+                                                <td> <?php echo $row["name"]  ?> </td>
+                                                <td> <?php echo $row["occupation"]  ?> </td>
+                                                <td> <?php echo $row["organization"]  ?> </td>
+                                                <td> <?php echo $row["o_address"]  ?> </td>
+                                                <td> <?php echo $row["state"]  ?> </td>
+                                                <td> <?php echo $row["email"]  ?> </td>
+                                                <td> <?php echo $row["phone"]  ?> </td>
+                                                <td><a href="delete.php?slno=<?php echo $row["slno"]; ?> " class="delete"><i class="material-icons" title="Delete">&#xE872;</i></a></td>
 
+                                            </tr>
+                                        <?php
+                                        };
+                                        ?>
 
 
 
@@ -653,14 +497,19 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="../index.php">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
+    <script>
+        $(document).ready(function() {
+            $('#alumni').DataTable();
+        });
+    </script>
+
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
